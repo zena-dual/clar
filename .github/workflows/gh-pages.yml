@@ -25,7 +25,7 @@ jobs:
           ${{ runner.os }}-modules-
 
     - name: install dependencies
-      run: yarn install --frozen-lockfile --production
+      run: yarn install --frozen-lockfile
 
     - name: prettify
       run: yarn fix
