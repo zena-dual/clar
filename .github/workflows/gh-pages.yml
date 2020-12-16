@@ -27,6 +27,9 @@ jobs:
     - name: install dependencies
       run: yarn install --frozen-lockfile
 
+    - name: prettify
+      run: yarn fix
+
     - name: build application
       run: yarn build
 
