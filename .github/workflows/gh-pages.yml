@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
 
@@ -19,19 +19,19 @@ jobs:
     - name: cache dependencies
       uses: actions/cache@v1
       with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        path: '**/node_modules'
+        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
-          ${{ runner.os }}-node-
+          ${{ runner.os }}-modules-
 
     - name: install dependencies
-      run: npm install --frozen-lockfile
+      run: yarn install --frozen-lockfile
 
     - name: build application
-      run: npm run build
+      run: yarn build
 
     - name: export application
-      run: npm run export
+      run: yarn export
 
     - name: add nojekyll
       run: touch ./out/.nojekyll
