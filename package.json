@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "build": "NODE_ENV='production' next build",
+    "dev": "NODE_ENV='development' next dev",
     "export": "next export",
     "fix": "tsc --noEmit && eslint '**/*.{js,ts,tsx}' --ignore-path .gitignore --quiet --fix",
     "serve": "serve out",
