@@ -22,6 +22,11 @@ module.exports = {
     sourceType: 'module',
     warnOnUnsupportedTypeScriptVersion: false,
   },
+  rules: {
+    'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
+    'no-use-before-define': [0],
+    '@typescript-eslint/no-use-before-define': [2],
+  },
   settings: {
     'import/resolver': {
       node: {
