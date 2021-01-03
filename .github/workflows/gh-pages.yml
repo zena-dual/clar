@@ -30,6 +30,9 @@ jobs:
     - name: prettify
       run: yarn fix
 
+    - name: copy env
+      run: cp ./env.example ./.env
+
     - name: build application
       run: yarn build
 
