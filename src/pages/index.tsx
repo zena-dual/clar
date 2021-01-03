@@ -1,21 +1,30 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import { AppBar } from '@material-ui/core';
+import { AppBar, makeStyles } from '@material-ui/core';
 import { APP_NAME } from '../app/settings';
 
-const Index: NextPage = () => (
-  <>
-    <Head>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width,initial-scale=1" />
+const useStyles = makeStyles(() => ({
+  appBar: {
+    backgroundColor: '#D3381C',
+  },
+}));
 
-      <title>{`トップ | ${APP_NAME}`}</title>
-    </Head>
+const Index: NextPage = () => {
+  const classes = useStyles();
+  return (
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <AppBar>app bar</AppBar>
+        <title>{`トップ | ${APP_NAME}`}</title>
+      </Head>
 
-    <div>initial page</div>
-  </>
-);
+      <AppBar className={classes.appBar}>app bar</AppBar>
+
+      <div>initial page</div>
+    </>
+  );
+};
 
 export default Index;
