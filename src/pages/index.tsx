@@ -1,16 +1,9 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import { AppBar, makeStyles } from '@material-ui/core';
 import { APP_NAME } from '../app/settings';
-
-const useStyles = makeStyles(() => ({
-  appBar: {
-    backgroundColor: '#D3381C',
-  },
-}));
+import { AppBar } from '../components/AppBar';
 
 const Index: NextPage = () => {
-  const classes = useStyles();
   return (
     <>
       <Head>
@@ -20,7 +13,7 @@ const Index: NextPage = () => {
         <title>{`トップ | ${APP_NAME}`}</title>
       </Head>
 
-      <AppBar className={classes.appBar}>app bar</AppBar>
+      <AppBar />
 
       <div>initial page</div>
     </>

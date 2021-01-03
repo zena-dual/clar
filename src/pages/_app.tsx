@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
+import { ThemeProvider } from '@material-ui/styles';
 import 'destyle.css';
+import { theme } from '../app/theme';
 
 interface Props<ComponentProps> {
   Component: (props: ComponentProps) => JSX.Element;
@@ -14,7 +16,11 @@ const App = ({ Component, pageProps }: Props<any>) => {
     }
   }, []);
 
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider theme={theme}>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 };
 
 export default App;

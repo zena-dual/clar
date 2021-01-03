@@ -33,6 +33,7 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'import/prefer-default-export': ['off'],
     'no-use-before-define': ['off'],
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
     'react/jsx-props-no-spreading': ['off'],
