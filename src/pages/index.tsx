@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
+import { AppBar } from '@material-ui/core';
 import { APP_NAME } from '../app/settings';
 
 const Index: NextPage = () => (
@@ -10,6 +11,8 @@ const Index: NextPage = () => (
 
       <title>{`トップ | ${APP_NAME}`}</title>
     </Head>
+
+    <AppBar>app bar</AppBar>
 
     <div>initial page</div>
   </>
