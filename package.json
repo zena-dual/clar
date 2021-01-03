@@ -1,14 +1,16 @@
 {
   "private": true,
   "scripts": {
-    "build": "NODE_ENV='production' next build",
-    "dev": "NODE_ENV='development' next dev",
+    "build": "next build",
+    "clean": "rm -rf .next && rm -rf out",
+    "dev": "NODE_ENV=development next dev",
     "export": "next export",
     "fix": "tsc --noEmit && eslint '**/*.{js,ts,tsx}' --ignore-path .gitignore --quiet --fix",
     "serve": "serve out",
     "start": "next start"
   },
   "dependencies": {
+    "destyle.css": "^2.0.2",
     "next": "^10.0.3",
     "node": "^15.4.0",
     "react": "^17.0.1",

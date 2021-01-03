@@ -23,9 +23,21 @@ module.exports = {
     warnOnUnsupportedTypeScriptVersion: false,
   },
   rules: {
-    'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
-    'no-use-before-define': [0],
-    '@typescript-eslint/no-use-before-define': [2],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    'no-use-before-define': ['off'],
+    'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
+    'react/jsx-props-no-spreading': ['off'],
+    'react/react-in-jsx-scope': ['off'],
+    '@typescript-eslint/no-use-before-define': ['error'],
   },
   settings: {
     'import/resolver': {
