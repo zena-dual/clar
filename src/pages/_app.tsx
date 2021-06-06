@@ -4,12 +4,14 @@ import { makeStyles } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import 'destyle.css';
 import { theme } from '../app/theme';
-import { AppBar } from '../components/AppBar';
+import { AppBar, appBarHeight } from '../components/AppBar';
+import { SideBar, sideBarWidth } from '../components/SideBar';
 
 const useStyles = makeStyles(() => ({
   body: {
-    marginTop: 60,
-    minHeight: 'calc(100vh - 60px)',
+    marginTop: appBarHeight,
+    marginLeft: sideBarWidth,
+    minHeight: `calc(100vh - ${appBarHeight}px)`,
   },
 }));
 
@@ -35,7 +37,9 @@ const App = ({ Component, pageProps }: Props<any>) => {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
       </Head>
 
-      <AppBar />
+      <AppBar title={typeof pageProps.title === 'string' ? pageProps.title : undefined} />
+
+      <SideBar />
 
       <div className={classes.body}>
         <Component {...pageProps} />

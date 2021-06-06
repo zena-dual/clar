@@ -2,7 +2,11 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import { APP_NAME } from '../app/settings';
 
-const Index: NextPage = () => {
+interface Props {
+  title: string;
+}
+
+const Index: NextPage<Props> = () => {
   return (
     <>
       <Head>
@@ -13,5 +17,7 @@ const Index: NextPage = () => {
     </>
   );
 };
+
+Index.getInitialProps = () => ({ title: 'トップ' });
 
 export default Index;
