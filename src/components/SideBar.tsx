@@ -1,22 +1,21 @@
 import { FunctionComponent } from 'react';
-import { Divider, Drawer, Typography, makeStyles } from '@material-ui/core';
-import { APP_NAME } from '../app/settings';
+import { List, ListItem, ListItemIcon, ListItemText, makeStyles } from '@material-ui/core';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import ListIcon from '@material-ui/icons/List';
+import { appBarHeight } from './AppBar';
 
-export const sideBarWidth = 240;
+export const sideBarWidth = '240px';
 
-const useStyles = makeStyles(({ spacing }) => ({
-  sideBar: {
-    width: sideBarWidth,
-    flexShrink: 0,
+const useStyles = makeStyles(({ palette, spacing }) => ({
+  listItemIcon: {
+    color: '#fff',
+    minWidth: 'initial',
+    marginRight: spacing(2),
   },
-  sideBarPaper: {
-    width: sideBarWidth,
-  },
-  title: {
-    fontSize: '1.5rem',
-    textAlign: 'center',
-    paddingBottom: spacing(2),
-    paddingTop: spacing(2),
+  list: {
+    backgroundColor: palette.primary.main,
+    color: '#fff',
+    height: `calc(100vh - ${appBarHeight})`,
   },
 }));
 
@@ -24,19 +23,22 @@ export const SideBar: FunctionComponent = () => {
   const classes = useStyles();
 
   return (
-    <Drawer
-      anchor="left"
-      className={classes.sideBar}
-      classes={{
-        paper: classes.sideBarPaper,
-      }}
-      variant="permanent"
-    >
-      <Typography variant="h1" color="primary" className={classes.title}>
-        {APP_NAME}
-      </Typography>
+    <List className={classes.list}>
+      <ListItem button component="a" href="/word/">
+        <ListItemIcon className={classes.listItemIcon}>
+          <ListIcon />
+        </ListItemIcon>
 
-      <Divider />
-    </Drawer>
+        <ListItemText primary="単語一覧" />
+      </ListItem>
+
+      <ListItem button component="a" href="/chant/">
+        <ListItemIcon className={classes.listItemIcon}>
+          <ChatBubbleIcon />
+        </ListItemIcon>
+
+        <ListItemText primary="名詠（詠唱）一覧" />
+      </ListItem>
+    </List>
   );
 };

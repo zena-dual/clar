@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
-import { makeStyles } from '@material-ui/core';
+import { Box, makeStyles, Typography } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import 'destyle.css';
 import { theme } from '../app/theme';
@@ -9,9 +9,7 @@ import { SideBar, sideBarWidth } from '../components/SideBar';
 
 const useStyles = makeStyles(() => ({
   body: {
-    marginTop: appBarHeight,
-    marginLeft: sideBarWidth,
-    minHeight: `calc(100vh - ${appBarHeight}px)`,
+    overflowY: 'scroll',
   },
 }));
 
@@ -37,13 +35,28 @@ const App = ({ Component, pageProps }: Props<any>) => {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
       </Head>
 
-      <AppBar title={typeof pageProps.title === 'string' ? pageProps.title : undefined} />
+      <AppBar />
 
-      <SideBar />
+      <Box display="flex" mt={appBarHeight}>
+        <Box width={sideBarWidth}>
+          <SideBar />
+        </Box>
 
-      <div className={classes.body}>
-        <Component {...pageProps} />
-      </div>
+        <Box
+          className={classes.body}
+          height={`calc(100vh - ${appBarHeight})`}
+          padding={3}
+          width={`calc(100vw - ${sideBarWidth})`}
+        >
+          {typeof pageProps.title === 'string' && (
+            <Box pb={2}>
+              <Typography variant="h6">{pageProps.title}</Typography>
+            </Box>
+          )}
+
+          <Component {...pageProps} />
+        </Box>
+      </Box>
     </ThemeProvider>
   );
 };
