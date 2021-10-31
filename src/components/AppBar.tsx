@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { AppBar as MuiAppBar, Link, Typography, makeStyles } from '@material-ui/core';
-import { APP_NAME } from '../app/settings';
+import { APP_NAME, APP_URL } from '../app/settings';
 
 export const appBarHeight = '60px';
 
@@ -21,7 +21,7 @@ export const AppBar: FunctionComponent = () => {
   return (
     <MuiAppBar className={classes.container}>
       <Typography variant="h1" className={classes.title}>
-        <Link color="initial" href="/">
+        <Link color="initial" href={APP_URL}>
           {APP_NAME}
         </Link>
       </Typography>
